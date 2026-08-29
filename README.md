@@ -1,4 +1,4 @@
-# 🚂 Romanian Railways (CFR) Search Engine
+# Romanian Railways (CFR) Search Engine
 
 A full-stack web application built with **Django** and **Tailwind CSS** that acts as a real-time search engine for the Romanian Railway system. It parses official XML datasets, structures them into a relational database, and provides users with a clean, fast interface to find direct train routes between any two cities.
 
@@ -7,13 +7,13 @@ A full-stack web application built with **Django** and **Tailwind CSS** that act
 ![Styling](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?logo=tailwind-css)
 ![Database](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Backend:** Python, Django
 * **Frontend:** HTML5, Tailwind CSS, JavaScript
 * **Database:** PostgreSQL
 
-## 🗄️ Database Architecture
+## Database Architecture
 
 The system is built on a scalable relational model:
 1. `Train`: Static data about the physical train (Number, Type/Rank, Company).
@@ -21,7 +21,7 @@ The system is built on a scalable relational model:
 3. `Journey`: A specific instance of a Train running on a specific Date.
 4. `Stop`: The intersection table linking a `Cursa` to a `Station`, containing Arrival Time, Departure Time, and Sequence Number.
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine.
 
@@ -46,5 +46,19 @@ Follow these instructions to get a copy of the project up and running on your lo
     ```
 3. **Install dependecies**
     ```bash
-    pip install django
+    pip install -r requirements.txt
     ```
+4. **Apply database migrations**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+5. **Import the Railway Dataset**
+   ```bash
+   python manage.py importa_date
+   ```
+6. **Start the development server**
+   ```bash
+   python manage.py runserver
+   ```
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser
