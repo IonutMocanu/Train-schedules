@@ -32,9 +32,9 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Installation
 
 1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/YourUsername/your-repo-name.git](https://github.com/YourUsername/your-repo-name.git)
-   cd your-repo-name
+```bash
+git clone [https://github.com/IonutMocanu/Train-schedules.git](https://github.com/IonutMocanu/Train-schedules.git)
+cd Train-schedules
    ```
 2. **Create and activate a virtual environment**
     ```bash
