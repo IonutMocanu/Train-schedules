@@ -2,6 +2,8 @@
 
 A full-stack web application built with **Django** and **Tailwind CSS** that acts as a real-time search engine for the Romanian Railway system. It parses official XML datasets, structures them into a relational database, and provides users with a clean, fast interface to find direct train routes between any two cities.
 
+<img width="1013" height="495" alt="WhatsApp Image 2026-08-29 at 13 02 31" src="https://github.com/user-attachments/assets/e44a3de7-7a50-4a84-bc48-ad2f5f61c5f2" />
+
 ![Project Status](https://img.shields.io/badge/Status-Completed-success)
 ![Framework](https://img.shields.io/badge/Framework-Django_5-092E20?logo=django)
 ![Styling](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?logo=tailwind-css)
@@ -21,6 +23,10 @@ The system is built on a scalable relational model:
 3. `Journey`: A specific instance of a Train running on a specific Date.
 4. `Stop`: The intersection table linking a `Cursa` to a `Station`, containing Arrival Time, Departure Time, and Sequence Number.
 
+<img width="846" height="352" alt="WhatsApp Image 2026-08-29 at 13 03 04" src="https://github.com/user-attachments/assets/be517ded-dc0a-475e-bf73-e840836a885d" />
+
+<img width="772" height="465" alt="WhatsApp Image 2026-08-29 at 13 03 42" src="https://github.com/user-attachments/assets/74fcc469-0167-4377-8239-e9dd63ec42a5" />
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine.
@@ -32,9 +38,9 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Installation
 
 1. **Clone the repository:**
-```bash
-git clone [https://github.com/IonutMocanu/Train-schedules.git](https://github.com/IonutMocanu/Train-schedules.git)
-cd Train-schedules
+   ```bash
+   git clone [https://github.com/IonutMocanu/Train-schedules.git](https://github.com/IonutMocanu/Train-schedules.git)
+   cd Train-schedules
    ```
 2. **Create and activate a virtual environment**
     ```bash
