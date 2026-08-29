@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mersul Trenurilor - Acasă</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(0,0,0,1); }
+        .brutal-shadow-sm { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1); }
+    </style>
+</head>
+<body class="bg-[#feca36] text-black font-sans min-h-screen flex flex-col">
+
+    <!-- Navigare -->
+    <nav class="p-6 flex justify-between items-center border-b-4 border-black bg-white">
+        <a href="{% url 'index' %}" class="text-3xl font-black tracking-tighter uppercase">MERSUL TRENURILOR</a>
+        <div class="space-x-6 font-bold uppercase text-sm">
+            <a href="{% url 'search' %}" class="hover:underline decoration-4 underline-offset-4">Căutare</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="bg-black text-white px-5 py-2 border-2 border-black hover:bg-white hover:text-black transition brutal-shadow-sm">Profilul Meu</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="hover:underline decoration-4 underline-offset-4">Login</a>
+            <a href="{% url 'register' %}" class="bg-black text-white px-5 py-2 border-2 border-black hover:bg-white hover:text-black transition brutal-shadow-sm">Înregistrare</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="flex-grow flex flex-col lg:flex-row items-center justify-center p-8 gap-12 max-w-7xl mx-auto">
+        <div class="flex-1 space-y-8">
+            <h1 class="text-6xl md:text-7xl font-black uppercase leading-none tracking-tight">
+                Găsește<br>Trenul<br>Tău.
+            </h1>
+            <p class="text-xl font-medium max-w-md border-l-4 border-black pl-4">
+                Sistem inteligent de căutare a rutelor feroviare. Simplu, rapid și cu design minimalist.
+            </p>
+            <a href="{% url 'search' %}" class="inline-block bg-white text-black font-black text-xl uppercase py-4 px-10 border-4 border-black brutal-shadow hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+                Caută Rută ➔
+            </a>
+        </div>
+        
+        <div class="flex-1 w-full relative">
+            <!-- Aici integrăm imaginea ta de referință cu efect brutalist -->
+            <img src="{% static '/img/8cda7d2c-b4b5-4876-aa94-8c5ce82f2797-removebg-preview.png' %}" alt="Railway Station Isometric" class="w-full border-4 border-black brutal-shadow object-cover rounded-xl">
+        </div>
+    </div>
+
+</body>
+</html>

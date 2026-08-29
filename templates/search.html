@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Căutare Rută</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .brutal-shadow {
+            box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+        }
+
+        .brutal-shadow-sm {
+            box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+        }
+    </style>
+</head>
+
+<body class="bg-[#feca36] text-black font-sans min-h-screen flex flex-col">
+
+    <nav class="p-6 flex justify-between items-center border-b-4 border-black bg-white">
+        <a href="{% url 'index' %}" class="text-3xl font-black tracking-tighter uppercase">MERSUL TRENURILOR</a>
+        <div class="space-x-6 font-bold uppercase text-sm hidden md:block">
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}"
+                class="bg-black text-white px-5 py-2 border-2 border-black hover:bg-white hover:text-black transition brutal-shadow-sm">Profilul
+                Meu</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="hover:underline decoration-4 underline-offset-4">Login</a>
+            <a href="{% url 'register' %}"
+                class="bg-black text-white px-5 py-2 border-2 border-black hover:bg-white hover:text-black transition brutal-shadow-sm">Înregistrare</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-white border-4 border-black brutal-shadow p-10 w-full max-w-4xl my-8">
+            <h2 class="text-4xl font-black uppercase mb-8 border-b-4 border-black pb-4">Unde Călătorești?</h2>
+
+            <form method="POST" action="{% url 'search' %}" class="flex flex-col md:flex-row gap-4 items-end w-full">
+                {% csrf_token %}
+
+                <div class="flex-1 w-full">
+                    <label class="block font-black uppercase mb-2">Plecare</label>
+                    <!-- Am șters list="orase-list" de aici, îl va adăuga JS-ul mai târziu -->
+                    <input type="text" id="input-plecare" name="departure" placeholder="EX: BUCUREȘTI"
+                        autocomplete="off" required
+                        class="w-full h-16 border-4 border-black p-4 font-black uppercase text-xl focus:outline-none focus:bg-yellow-100 transition">
+                </div>
+
+                <div class="flex-1 w-full">
+                    <label class="block font-black uppercase mb-2">Destinație</label>
+                    <input type="text" id="input-destinatie" name="arrival" placeholder="EX: CONSTANȚA"
+                        autocomplete="off" required
+                        class="w-full h-16 border-4 border-black p-4 font-black uppercase text-xl focus:outline-none focus:bg-yellow-100 transition">
+                </div>
+
+                <div class="w-full md:w-48">
+                    <label class="block font-black uppercase mb-2">Data</label>
+                    <input type="date" name="date" required
+                        class="w-full h-16 border-4 border-black p-4 font-black text-lg focus:outline-none focus:bg-yellow-100 transition cursor-pointer">
+                </div>
+
+                <div class="w-full md:w-auto">
+                    <button type="submit"
+                        class="w-full h-16 bg-black text-white border-4 border-black px-8 font-black uppercase text-xl hover:bg-white hover:text-black transition brutal-shadow-sm">
+                        Caută
+                    </button>
+                </div>
+            </form>
+
+            <datalist id="orase-list">
+                {% for oras in orase %}
+                <option value="{{ oras }}"></option>
+                {% endfor %}
+            </datalist>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const plecareInput = document.getElementById('input-plecare');
+        const destinatieInput = document.getElementById('input-destinatie');
+
+        function activeazaAutocompletarea(inputElement) {
+            inputElement.addEventListener('input', function() {
+                if (this.value.length >= 3) {
+                    this.setAttribute('list', 'orase-list');
+                } else {
+                    this.removeAttribute('list');
+                }
+            });
+        }
+
+        activeazaAutocompletarea(plecareInput);
+        activeazaAutocompletarea(destinatieInput);
+    });
+</script>

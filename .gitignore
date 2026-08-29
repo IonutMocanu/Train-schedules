@@ -1,0 +1,14 @@
+# Medii virtuale
+venv/
+env/
+
+# Fisiere cache Python
+__pycache__/
+*.pyc
+
+# Baze de date locale (daca ai folosit la un moment dat)
+db.sqlite3
+
+# Fisiere de sistem / VS Code
+.vscode/
+.DS_Store

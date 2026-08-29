@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(0,0,0,1); }
+        .brutal-shadow-sm { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1); }
+    </style>
+</head>
+<body class="bg-[#feca36] text-black font-sans min-h-screen flex flex-col">
+
+    <!-- Navigare -->
+    <nav class="p-6 flex justify-between items-center border-b-4 border-black bg-white">
+            <a href="{% url 'index' %}" class="text-3xl font-black tracking-tighter uppercase">MERSUL TRENURILOR</a>
+        <div class="space-x-6 font-bold uppercase text-sm hidden md:block">
+            <a href="{% url 'search' %}" class="hover:underline decoration-4 underline-offset-4">Căutare</a>
+            <a href="{% url 'register' %}" class="bg-black text-white px-5 py-2 border-2 border-black hover:bg-white hover:text-black transition brutal-shadow-sm">Înregistrare</a>
+        </div>
+    </nav>
+
+    <div class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-white border-4 border-black brutal-shadow p-10 w-full max-w-md my-8">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-black tracking-tighter uppercase mb-2 block">LOGIN</h1>
+                <p class="font-bold uppercase border-b-4 border-black inline-block pb-1">Bine ai revenit</p>
+            </div>
+
+            <form action="{% url 'login' %}" method="POST">
+                
+                {% csrf_token %}
+
+                <div class="mb-6">
+                    <label class="block font-black uppercase mb-2 text-lg">Email / Utilizator</label>
+                    <input type="text" name="username" class="w-full border-4 border-black p-4 font-bold focus:outline-none focus:bg-yellow-100 transition" required>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block font-black uppercase mb-2 text-lg">Parolă</label>
+                    <input type="password" name="password" class="w-full border-4 border-black p-4 font-bold focus:outline-none focus:bg-yellow-100 transition" required>
+                </div>
+
+                <button type="submit" class="w-full bg-black text-white font-black uppercase py-4 border-4 border-black hover:bg-[#feca36] hover:text-black transition brutal-shadow mb-6 transition brutal-shadow mb-6 hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+                    Intră în cont
+                </button>
+            </form>
+
+            <p class="text-center font-bold uppercase text-sm mb-4">
+                Nu ai cont? <a href="{% url 'register' %}" class="hover:underline decoration-4 underline-offset-4 transition">Creează unul</a>
+            </p>
+
+            {% if messages %}
+                <div class="mt-6 space-y-2">
+                    {% for message in messages %}
+                        <div class="text-black font-black text-sm text-center">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+</body>
+</html>
